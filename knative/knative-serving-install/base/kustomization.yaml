@@ -22,7 +22,6 @@ images:
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/activator
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/activator
   digest: sha256:8e606671215cc029683e8cd633ec5de9eabeaa6e9a4392ff289883304be1f418
-
 - name: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler-hpa
   newName: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler-hpa
   digest: sha256:75da5ff75bc1e71799d039846b1bbd632343894c88feaa59914cfeeb1b213c81
