@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    serving.knative.dev/release: "v0.11.1"
+    serving.knative.dev/release: "v0.11.2"
   name: activator
   namespace: knative-serving
 spec:
@@ -19,7 +19,7 @@ spec:
       labels:
         app: activator
         role: activator
-        serving.knative.dev/release: "v0.11.1"
+        serving.knative.dev/release: "v0.11.2"
     spec:
       containers:
         - env:
@@ -83,7 +83,7 @@ kind: Deployment
 metadata:
   labels:
     autoscaling.knative.dev/autoscaler-provider: hpa
-    serving.knative.dev/release: "v0.11.1"
+    serving.knative.dev/release: "v0.11.2"
   name: autoscaler-hpa
   namespace: knative-serving
 spec:
@@ -97,7 +97,7 @@ spec:
         sidecar.istio.io/inject: "false"
       labels:
         app: autoscaler-hpa
-        serving.knative.dev/release: "v0.11.1"
+        serving.knative.dev/release: "v0.11.2"
     spec:
       containers:
         - env:
@@ -111,7 +111,7 @@ spec:
               value: config-observability
             - name: METRICS_DOMAIN
               value: knative.dev/serving
-          image: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler-hpa@sha256:5e0fadf574e66fb1c893806b5c5e5f19139cc476ebf1dff9860789fe4ac5f545
+          image: gcr.io/knative-releases/knative.dev/serving/cmd/autoscaler-hpa@sha256:75da5ff75bc1e71799d039846b1bbd632343894c88feaa59914cfeeb1b213c81
           name: autoscaler-hpa
           ports:
             - containerPort: 9090
@@ -133,7 +133,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    serving.knative.dev/release: "v0.11.1"
+    serving.knative.dev/release: "v0.11.2"
   name: autoscaler
   namespace: knative-serving
 spec:
@@ -149,7 +149,7 @@ spec:
         traffic.sidecar.istio.io/includeInboundPorts: 8080,9090
       labels:
         app: autoscaler
-        serving.knative.dev/release: "v0.11.1"
+        serving.knative.dev/release: "v0.11.2"
     spec:
       containers:
         - args:
@@ -207,7 +207,7 @@ kind: Deployment
 metadata:
   labels:
     networking.knative.dev/ingress-provider: istio
-    serving.knative.dev/release: "v0.11.1"
+    serving.knative.dev/release: "v0.11.2"
   name: networking-istio
   namespace: knative-serving
 spec:
@@ -257,7 +257,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    serving.knative.dev/release: "v0.11.1"
+    serving.knative.dev/release: "v0.11.2"
   name: webhook
   namespace: knative-serving
 spec:
@@ -274,7 +274,7 @@ spec:
       labels:
         app: webhook
         role: webhook
-        serving.knative.dev/release: "v0.11.1"
+        serving.knative.dev/release: "v0.11.2"
     spec:
       containers:
         - env:
@@ -310,7 +310,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    serving.knative.dev/release: "v0.11.1"
+    serving.knative.dev/release: "v0.11.2"
   name: controller
   namespace: knative-serving
 spec:
@@ -324,21 +324,21 @@ spec:
         sidecar.istio.io/inject: "false"
       labels:
         app: controller
-        serving.knative.dev/release: "v0.11.1"
+        serving.knative.dev/release: "v0.11.2"
     spec:
       containers:
         - env:
-            - name: SYSTEM_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: CONFIG_LOGGING_NAME
-              value: config-logging
-            - name: CONFIG_OBSERVABILITY_NAME
-              value: config-observability
-            - name: METRICS_DOMAIN
-              value: knative.dev/internal/serving
-          image: gcr.io/knative-releases/knative.dev/serving/cmd/controller@sha256:5ca13e5b3ce5e2819c4567b75c0984650a57272ece44bc1dabf930f9fe1e19a1
+          - name: SYSTEM_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: CONFIG_LOGGING_NAME
+            value: config-logging
+          - name: CONFIG_OBSERVABILITY_NAME
+            value: config-observability
+          - name: METRICS_DOMAIN
+            value: knative.dev/internal/serving
+          image: gcr.io/knative-releases/knative.dev/serving/cmd/controller@sha256:1e77bdab30c8d0f0df299f5fa93d6f99eb63071b9d3329937dff0c6acb99e059
           name: controller
           ports:
             - containerPort: 9090
