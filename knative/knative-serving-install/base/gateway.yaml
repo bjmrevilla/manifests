@@ -4,11 +4,7 @@ metadata:
   labels:
     networking.knative.dev/ingress-provider: istio
     serving.knative.dev/release: "v0.11.2"
-<<<<<<< HEAD
   name: knative-ingress-gateway
-=======
-  name: cluster-local-gateway
->>>>>>> 24d14c136eb693d4a99132391000fdac63f6e6e6
   namespace: knative-serving
 spec:
   selector:
